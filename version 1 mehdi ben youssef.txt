@@ -1,0 +1,114 @@
+
+using System;
+class Programme
+{
+    static int saisirval()
+    {
+        Console.WriteLine("donner la valeur val");
+        int val =Convert.ToInt32(Console.ReadLine());
+        return val;
+    }
+    static int saisirx()
+    {
+        Console.WriteLine("donner la valeur x a rechercher");
+        int x = Convert.ToInt32(Console.ReadLine());
+        return x;
+    }
+    static bool doublon(int[]t,int val ,int n)
+    {
+        int r = 0;
+        int i = 0;
+        bool f = false;
+        while(i<n && f == false)
+        {
+            if (t[i] == val)
+            {
+                r++;
+            }
+            if (r > 1)
+            {
+                f= true;
+            }
+        }
+        return f;
+    }
+    static int deuxieme(int[]t , int n)
+    {
+        int min = t[0];
+        for (int i = 1; i < n; i++)
+        {
+            if ((t[i]< min)){
+                min = t[i];
+               
+
+            }
+        }
+        int min2 = t[0];
+        for (int i = 1; i < n; i++)
+        {
+            if ((t[i] < min2 && t[i]>min )){
+                min2 = t[i];
+
+            }
+        }
+        return min2;
+    }
+    static bool rechercheseq(int[]t,int n ,int x)
+    {
+        bool f = false;
+        int i = 0;
+        while (i<n && f == false)
+        {
+            if( t[i]== x)
+            {
+                f = true;
+            }
+            i++;
+        }
+        return f;
+    }
+    static void afficher(int[]t, int n)
+    {
+        foreach(int i in t)
+        {
+            Console.WriteLine(i);
+        }
+    }
+    static void remplir( int[] t ,out  int n)
+    {
+        n = 0;
+        Console.WriteLine("dooner la case num " + (n + 1));
+        int x = Convert.ToInt32(Console.ReadLine());
+        while(x != -1)
+        {
+            t[n] = x;
+            n= n + 1;
+            Console.WriteLine("donner la case num " + (n + 1));
+            x = Convert.ToInt32(Console.ReadLine());
+        }
+    }
+
+    static void Main()
+    {
+        int n;
+        
+        int [] t = new int [50];
+        remplir(t, out n);
+        int val = saisirval();
+        int x = saisirx();
+        bool f=doublon(t, val, n);
+        Console.WriteLine("la valeur est"+f+"doublee");
+        int mi = deuxieme(t, n);
+        Console.WriteLine("la desieme valeur minimale est" + mi);
+        bool r = rechercheseq(t, n,x);
+        Console.WriteLine("la resultat de la recherche est" + r);
+        afficher(t, n);
+
+
+
+    }
+
+
+
+
+}
