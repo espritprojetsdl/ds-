@@ -74,26 +74,24 @@ class Programme
             Console.WriteLine(i);
         }
     }
-    static void remplir( int[] t ,out  int n)
+    static void remplir( int[] t , int n)
     {
-        n = 0;
-        Console.WriteLine("dooner la case num " + (n + 1));
-        int x = Convert.ToInt32(Console.ReadLine());
-        while(x != -1)
+       Random r = new Random();
+       for (int i = 1; i < n ; i++)
         {
-            t[n] = x;
-            n= n + 1;
-            Console.WriteLine("donner la case num " + (n + 1));
-            x = Convert.ToInt32(Console.ReadLine());
+            t[i]= r.Next(0,100);
+        }
+        {
+
         }
     }
 
     static void Main()
     {
-        int n;
+        int n=50;
         
-        int [] t = new int [50];
-        remplir(t, out n);
+        int [] t = new int [n];
+        remplir(t, n);
         int val = saisirval();
         int x = saisirx();
         bool f=doublon(t, val, n);
